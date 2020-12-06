@@ -2,7 +2,7 @@
 
 Hello! I'm [Dario](about/)
 
-# Adding Oracle JDK11 in Debian's update-java-alternatives
+# Adding Oracle JDK11 in Debian Alternatives system
 
 ## Philosophical perspective
 
@@ -11,7 +11,7 @@ Hello! I'm [Dario](about/)
 > are installed simultaneously but with one particular implementation designated 
 > as the default.
 
-(source: [https://wiki.debian.org/DebianAlternatives])
+source: [Debian alternatives](https://wiki.debian.org/DebianAlternatives)
 
 If you use Debian you should manage your multiple Java installation under this
 system.
@@ -20,6 +20,7 @@ system.
 
 In your Debian machine, you can query the existing configured Java alternatives
 with
+
 ```bash
 stylee@matrix17:~$ sudo update-java-alternatives -l
 java-1.11.0-openjdk-amd64      1111       /usr/lib/jvm/java-1.11.0-openjdk-amd64
@@ -27,12 +28,15 @@ oracle-java6-jdk-amd64         316        /usr/lib/jvm/oracle-java6-jdk-amd64
 oracle-java8-jdk-amd64         318        /usr/lib/jvm/oracle-java8-jdk-amd64
 stylee@matrix17:~$
 ```
+
 I installed JDK 11.0.6 from Oracle's deb package and I have
+
 ```bash
 stylee@matrix17:~$ dpkg -l |grep jdk
 ii  jdk-11.0.6                                                  11.0.6-1                            amd64        Java Platform Standard Edition Development Kit
 stylee@matrix17:~$
 ```
+
 but it doesn't appear in my alternatives configuration. Oracle does not support
 the configuration for Debian alternatives.
 
@@ -44,6 +48,7 @@ Thanks to [dedeibel](https://gist.github.com/dedeibel/)
 [work](https://gist.github.com/dedeibel/685dc47e6361b341d208b1747cedbc5b), we 
 have a working jinfo for a JDK 11.0.2 installation, we can easily adapt it to 
 our version.
+
 ```
 name=jdk-11.0.6
 priority=1106
@@ -74,12 +79,15 @@ jdk jstatd /usr/lib/jvm/jdk-11.0.6/bin/jstatd
 jdk rmic /usr/lib/jvm/jdk-11.0.6/bin/rmic
 jdk serialver /usr/lib/jvm/jdk-11.0.6/bin/serialver
 ```
+
 Put it in the right position, under
+
 ```bash
 /usr/lib/jvm/.jdk-11.0.6.jinfo
 ```
 
 Right now, `update-alternatives` just detect it
+
 ```bash
 stylee@matrix17:~$ sudo update-java-alternatives -l
 java-1.11.0-openjdk-amd64      1111       /usr/lib/jvm/java-1.11.0-openjdk-amd64
@@ -95,6 +103,7 @@ to bind.
 ## Configure JDK 11 binaries to alternatives system
 
 Launch the following commands
+
 ```bash
 sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk-11.0.6/bin/java 1106
 sudo update-alternatives --install /usr/bin/jexec jexec /usr/lib/jvm/jdk-11.0.6/lib/jexec 1106
@@ -127,6 +136,7 @@ and that's all, it's all configured correctly.
 ## Use your JDK 11.0.6
 
 To use it, run the following
+
 ```bash
 stylee@matrix17:~$ sudo update-java-alternatives -s jdk-11.0.6 
 update-alternatives: errore: nessuna alternativa per iceweasel-javaplugin.so
@@ -141,7 +151,8 @@ stylee@matrix17:~$
 ```
 
 To prove your java executable is the right one
-```
+
+```bash
 stylee@matrix17:~$ java -version
 java version "11.0.6" 2020-01-14 LTS
 Java(TM) SE Runtime Environment 18.9 (build 11.0.6+8-LTS)
