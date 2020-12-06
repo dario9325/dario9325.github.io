@@ -4,33 +4,46 @@ Hello! I'm [Dario](about/)
 
 # Adding Oracle JDK11 in Debian's update-java-alternatives
 
+## Philosophical perspective
+
+> The Debian alternatives system creates a way for several programs that fulfill 
+> the same or similar functions to be listed as alternative implementations that 
+> are installed simultaneously but with one particular implementation designated 
+> as the default.
+
+(source: [https://wiki.debian.org/DebianAlternatives])
+
+If you use Debian you should manage your multiple Java installation under this
+system.
+
 ## List existing Java alternatives
 
 In your Debian machine, you can query the existing configured Java alternatives
-with:
-
+with
 ```bash
-$ sudo update-java-alternatives -l
+stylee@matrix17:~$ sudo update-java-alternatives -l
 java-1.11.0-openjdk-amd64      1111       /usr/lib/jvm/java-1.11.0-openjdk-amd64
 oracle-java6-jdk-amd64         316        /usr/lib/jvm/oracle-java6-jdk-amd64
 oracle-java8-jdk-amd64         318        /usr/lib/jvm/oracle-java8-jdk-amd64
-$
+stylee@matrix17:~$
 ```
 I installed JDK 11.0.6 from Oracle's deb package and I have
 ```bash
-$ dpkg -l |grep jdk
+stylee@matrix17:~$ dpkg -l |grep jdk
 ii  jdk-11.0.6                                                  11.0.6-1                            amd64        Java Platform Standard Edition Development Kit
-[...]
-$
+stylee@matrix17:~$
 ```
-but it doesn't appear in my alternatives configuration.
+but it doesn't appear in my alternatives configuration. Oracle does not support
+the configuration for Debian alternatives.
 
 To enable it, we have to follow the follwing steps.
 
 ## Create a jinfo file for JDK 11
 
-Thanks to [dedeibel ](https://gist.github.com/dedeibel/), we have a working jinfo
-for a JDK 11.0.2 installation, we can easily adapt it to our version.
+Thanks to [dedeibel](https://gist.github.com/dedeibel/) 
+[work](https://gist.github.com/dedeibel/685dc47e6361b341d208b1747cedbc5b), we 
+have a working jinfo for a JDK 11.0.2 installation, we can easily adapt it to 
+our version.
 ```
 name=jdk-11.0.6
 priority=1106
@@ -68,12 +81,12 @@ Put it in the right position, under
 
 Right now, `update-alternatives` just detect it
 ```bash
-$ sudo update-java-alternatives -l
+stylee@matrix17:~$ sudo update-java-alternatives -l
 java-1.11.0-openjdk-amd64      1111       /usr/lib/jvm/java-1.11.0-openjdk-amd64
 jdk-11.0.6                     1106       /usr/lib/jvm/jdk-11.0.6
 oracle-java6-jdk-amd64         316        /usr/lib/jvm/oracle-java6-jdk-amd64
 oracle-java8-jdk-amd64         318        /usr/lib/jvm/oracle-java8-jdk-amd64
-$ 
+stylee@matrix17:~$ 
 ```
 
 But it's not finished, yet: we have to tell `update-alternatives` which binary
@@ -115,7 +128,7 @@ and that's all, it's all configured correctly.
 
 To use it, run the following
 ```bash
-$ sudo update-java-alternatives -s jdk-11.0.6 
+stylee@matrix17:~$ sudo update-java-alternatives -s jdk-11.0.6 
 update-alternatives: errore: nessuna alternativa per iceweasel-javaplugin.so
 update-alternatives: errore: nessuna alternativa per jaotc
 update-alternatives: errore: nessuna alternativa per jdeprscan
@@ -124,14 +137,14 @@ update-alternatives: errore: nessuna alternativa per jimage
 update-alternatives: errore: nessuna alternativa per jlink
 update-alternatives: errore: nessuna alternativa per jmod
 update-alternatives: errore: nessuna alternativa per jshell
-$
+stylee@matrix17:~$
 ```
 
 To prove your java executable is the right one
 ```
-$ java -version
+stylee@matrix17:~$ java -version
 java version "11.0.6" 2020-01-14 LTS
 Java(TM) SE Runtime Environment 18.9 (build 11.0.6+8-LTS)
 Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.6+8-LTS, mixed mode)
-$ 
+stylee@matrix17:~$ 
 ```
