@@ -1,3 +1,3 @@
 ## Welcome to my GitHub pages
 
-Hello!
+Hello! I'm [Dario](about/)
