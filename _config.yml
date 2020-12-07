@@ -3,3 +3,6 @@ description: Technology everywhere
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-architect
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
