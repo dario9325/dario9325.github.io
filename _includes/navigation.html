@@ -1,0 +1,12 @@
+<nav>
+    <h3>Sitemap</h3>
+    <ul>
+        {% for item in site.data.navigation %}
+        <li>
+            <a href="{{ item.link }}" {% if page.url == item.link %}style="color: green;"{% endif %}>
+                {{ item.name }}
+            </a>
+        </li>        
+        {% endfor %}
+    </ul>
+</nav>

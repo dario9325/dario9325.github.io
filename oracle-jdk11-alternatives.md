@@ -1,10 +1,11 @@
-# Welcome to my GitHub pages
+---
+layout: default
+title: Adding Oracle JDK11 in Debian Alternative system
+permalink: /oracle-jdk11-alternatives/
+---
+## Adding Oracle JDK11 in Debian Alternatives system
 
-Hello! I'm [Dario](about/)
-
-# Adding Oracle JDK11 in Debian Alternatives system
-
-## Philosophical perspective
+### Philosophical perspective
 
 > The Debian alternatives system creates a way for several programs that fulfill 
 > the same or similar functions to be listed as alternative implementations that 
@@ -16,7 +17,7 @@ source: [Debian alternatives](https://wiki.debian.org/DebianAlternatives)
 If you use Debian you should manage your multiple Java installation under this
 system.
 
-## List existing Java alternatives
+### List existing Java alternatives
 
 In your Debian machine, you can query the existing configured Java alternatives
 with
@@ -42,7 +43,7 @@ the configuration for Debian alternatives.
 
 To enable it, we have to follow the follwing steps.
 
-## Create a jinfo file for JDK 11
+### Create a jinfo file for JDK 11
 
 Thanks to [dedeibel](https://gist.github.com/dedeibel/) 
 [work](https://gist.github.com/dedeibel/685dc47e6361b341d208b1747cedbc5b), we 
@@ -100,7 +101,7 @@ stylee@matrix17:~$
 But it's not finished, yet: we have to tell `update-alternatives` which binary
 to bind.
 
-## Configure JDK 11 binaries to alternatives system
+### Configure JDK 11 binaries to alternatives system
 
 Launch the following commands
 
@@ -133,7 +134,7 @@ sudo update-alternatives --install /usr/bin/serialver serialver /usr/lib/jvm/jdk
 ```
 and that's all, it's all configured correctly.
 
-## Use your JDK 11.0.6
+### Use your JDK 11.0.6
 
 To use it, run the following
 
@@ -159,3 +160,4 @@ Java(TM) SE Runtime Environment 18.9 (build 11.0.6+8-LTS)
 Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.6+8-LTS, mixed mode)
 stylee@matrix17:~$ 
 ```
+
