@@ -37,7 +37,7 @@ I installed JDK 17 from Oracle's deb package and I have
 ```bash
 stylee@matrix17:~$ dpkg -l |grep jdk
 ii  jdk-17                                                      17-ga                                  amd64        Java Platform Standard Edition Development Kit
-stylee@matrix17:~$
+stylee@matrix17:~$ 
 ```
 
 but it doesn't appear in my alternatives configuration. Oracle does not support
