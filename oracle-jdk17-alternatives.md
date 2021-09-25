@@ -49,7 +49,7 @@ To enable it, we have to follow the follwing steps.
 ### Create a jinfo file for JDK 17
 
 Following previous [Oracle JDK11](oracle-jdk11-alternatives/) article,
-we can easily adapt it to our version.
+we can easily adapt it to our version (you can download it [here][1]).
 
 ```
 name=jdk-17
@@ -168,3 +168,4 @@ stylee@matrix17:~$
 
 ```
 
+[1]:{{ site.url }}/download/jdk-17.jinfo
