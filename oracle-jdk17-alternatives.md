@@ -38,6 +38,7 @@ I installed JDK 17 from Oracle's deb package and I have
 stylee@matrix17:~$ dpkg -l |grep jdk
 ii  jdk-17                                                      17-ga                                  amd64        Java Platform Standard Edition Development Kit
 stylee@matrix17:~$ 
+
 ```
 
 but it doesn't appear in my alternatives configuration. Oracle does not support
@@ -100,6 +101,7 @@ jdk-17                         1700       /usr/lib/jvm/jdk-17
 oracle-java6-jdk-amd64         316        /usr/lib/jvm/oracle-java6-jdk-amd64
 oracle-java8-jdk-amd64         318        /usr/lib/jvm/oracle-java8-jdk-amd64
 stylee@matrix17:~$ 
+
 ```
 
 But it's not finished, yet: we have to tell `update-alternatives` which binary
@@ -152,6 +154,7 @@ update-alternatives: errore: nessuna alternativa per jaotc
 update-alternatives: errore: nessuna alternativa per jdeprscan
 update-alternatives: errore: nessuna alternativa per jmc
 stylee@matrix17:~$ 
+
 ```
 
 To prove your java executable is the right one
@@ -162,5 +165,6 @@ java version "17" 2021-09-14 LTS
 Java(TM) SE Runtime Environment (build 17+35-LTS-2724)
 Java HotSpot(TM) 64-Bit Server VM (build 17+35-LTS-2724, mixed mode, sharing)
 stylee@matrix17:~$ 
+
 ```
 

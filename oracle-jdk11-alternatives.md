@@ -27,7 +27,8 @@ stylee@matrix17:~$ sudo update-java-alternatives -l
 java-1.11.0-openjdk-amd64      1111       /usr/lib/jvm/java-1.11.0-openjdk-amd64
 oracle-java6-jdk-amd64         316        /usr/lib/jvm/oracle-java6-jdk-amd64
 oracle-java8-jdk-amd64         318        /usr/lib/jvm/oracle-java8-jdk-amd64
-stylee@matrix17:~$
+stylee@matrix17:~$ 
+
 ```
 
 I installed JDK 11.0.6 from Oracle's deb package and I have
@@ -35,7 +36,8 @@ I installed JDK 11.0.6 from Oracle's deb package and I have
 ```bash
 stylee@matrix17:~$ dpkg -l |grep jdk
 ii  jdk-11.0.6                                                  11.0.6-1                            amd64        Java Platform Standard Edition Development Kit
-stylee@matrix17:~$
+stylee@matrix17:~$ 
+
 ```
 
 but it doesn't appear in my alternatives configuration. Oracle does not support
@@ -96,6 +98,7 @@ jdk-11.0.6                     1106       /usr/lib/jvm/jdk-11.0.6
 oracle-java6-jdk-amd64         316        /usr/lib/jvm/oracle-java6-jdk-amd64
 oracle-java8-jdk-amd64         318        /usr/lib/jvm/oracle-java8-jdk-amd64
 stylee@matrix17:~$ 
+
 ```
 
 But it's not finished, yet: we have to tell `update-alternatives` which binary
@@ -148,7 +151,8 @@ update-alternatives: errore: nessuna alternativa per jimage
 update-alternatives: errore: nessuna alternativa per jlink
 update-alternatives: errore: nessuna alternativa per jmod
 update-alternatives: errore: nessuna alternativa per jshell
-stylee@matrix17:~$
+stylee@matrix17:~$ 
+
 ```
 
 To prove your java executable is the right one
@@ -159,5 +163,6 @@ java version "11.0.6" 2020-01-14 LTS
 Java(TM) SE Runtime Environment 18.9 (build 11.0.6+8-LTS)
 Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.6+8-LTS, mixed mode)
 stylee@matrix17:~$ 
+
 ```
 
