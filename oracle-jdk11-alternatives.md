@@ -12,7 +12,7 @@ permalink: /oracle-jdk11-alternatives/
 > are installed simultaneously but with one particular implementation designated 
 > as the default.
 
-source: [Debian alternatives](https://wiki.debian.org/DebianAlternatives)
+source: [Debian alternatives](https://wiki.debian.org/DebianAlternatives){:target="_blank"}
 
 If you use Debian you should manage your multiple Java installation under this
 system.
@@ -45,9 +45,9 @@ To enable it, we have to follow the follwing steps.
 
 ### Create a jinfo file for JDK 11
 
-Thanks to [dedeibel](https://gist.github.com/dedeibel/) 
-[work](https://gist.github.com/dedeibel/685dc47e6361b341d208b1747cedbc5b), we 
-have a working jinfo for a JDK 11.0.2 installation, we can easily adapt it to 
+Thanks to [dedeibel](https://gist.github.com/dedeibel/){:target="_blank"}
+[work](https://gist.github.com/dedeibel/685dc47e6361b341d208b1747cedbc5b){:target="_blank"},
+we have a working jinfo for a JDK 11.0.2 installation, we can easily adapt it to
 our version.
 
 ```

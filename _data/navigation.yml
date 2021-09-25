@@ -4,3 +4,5 @@
   link: /about/
 - name: Adding Oracle JDK11 in Debian Alternatives system
   link: /oracle-jdk11-alternatives/
+- name: Adding Oracle JDK17 LTS in Debian Alternatives system
+  link: /oracle-jdk17-alternatives/
