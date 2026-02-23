@@ -6,3 +6,5 @@
   link: /oracle-jdk11-alternatives/
 - name: Adding Oracle JDK17 LTS in Debian Alternatives system
   link: /oracle-jdk17-alternatives/
+- name: OBS v32 with CEF support recompile on debian testing (Feb 2026)
+  link: /obs-v32-with-CEF-recompile-debian-testing/
